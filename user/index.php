@@ -10,7 +10,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <header class="container-fluid bg-dark">
+    <header class="container-fluid bg-success">
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-dark container">
                 <a class="navbar-brand d-flex align-items-center" href="/">

@@ -12,7 +12,7 @@ include "koneksi.php";
 </head>
 
 <body>
-    <nav class="main-header navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="main-header navbar navbar-expand-md navbar-dark bg-success">
         <div class="container-fluid">
             <a href="" class="navbar-brand">
                 <span class="brand-text font-weight-light text-red">CRUD</span>
