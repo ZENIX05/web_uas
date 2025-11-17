@@ -25,10 +25,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">About us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Promosi</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Artikel</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Menu</a>
+                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Promosi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Artikel</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
