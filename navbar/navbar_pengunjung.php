@@ -30,7 +30,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Menu</a>
-                    </li>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Promosi</a>
                         </li>
