@@ -1,3 +1,9 @@
+<?php
+    include "../../link/Koneksi.php";
+    include "../../link/link_bs_css.php";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +11,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kasir</title>
-    <?php
-    include "../link/Koneksi.php";
-    include "../link/link.php";
-    ?>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -44,6 +46,54 @@
             </nav>
         </div>
     </header>
+
+    <main class="container my-4 flex-grow-1">
+        <div class="row">
+            <section class="col-12">
+                <h1>Selamat Datang di Halaman Kasir Poin Coffeee</h1>
+                <p>Gunakan navigasi di atas untuk mengelola menu, pesanan, transaksi, dan promosi.</p>
+            </section>
+        </div>
+
+        <div class="container mt-3 p-3 border border-info bg-dark ">
+        <a href="tambah_menu.php" class="btn btn-info">Tambah menu</a>
+        <hr>
+        <div class="col-md-12">
+            <table class="table table-bordered border-info text-center text-light">
+                <tr>
+                    <td>ID</td>
+                    <td>Nama Menu</td>
+                    <td>Harga</td>
+                    <td>Deskripsi</td>
+                    <td>Gambar</td>
+                    <td>Status</td>
+                    <td>aksi</td>
+                </tr>
+                <?php
+                $sql = "SELECT * from tbl_menu";
+                $no = 1;
+                $query = mysqli_query($koneksi, $sql);
+                foreach ($query as $r) {
+                ?>
+                    <tr>
+                        <td><?= $no++ ?></td>
+                        <td><?= $r['nama_menu'] ?></td>
+                        <td><?= $r['harga'] ?></td>
+                        <td><?= $r['deskripsi'] ?></td>
+                        <td><img src="../assets/<?= $r['gambar'] ?>" alt="<?= $r['gambar'] ?>" width="100"></td>
+                        <td><?= $r['status'] ?></td>
+                        <td>
+                            <a href="edit_menu.php?id_menu=<?= $r['id_menu']; ?>" class='btn btn-warning'>EDIT</a>
+                            <hr>
+                            <a href="hapus_menu.php?id_menu=<?= $r['id_menu']; ?>" class='btn btn-danger'>HAPUS</a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </table>
+        </div>
+    </div>
+
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
