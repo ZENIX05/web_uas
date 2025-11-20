@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
+    
+<!-- data-bs-theme="dark" -->
 
 <head>
     <meta charset="UTF-8">
@@ -10,9 +12,8 @@
     include "../../link/link_bs_css.php";
     ?>
     <style>
-        /* Sedikit style agar input qty terlihat rapi di dalam card */
-        .input-qty {
-            width: 60px;
+        #qty {
+            width: 70px;
             text-align: center;
         }
     </style>
@@ -57,9 +58,13 @@
         <div class="container-fluid">
             <div class="row">
 
-                <main class="col-md-8 py-4 ">
-                    <h2>Pilih Menu</h2>
+                <main class="col-md-8 py-4" >
+                    <h2 >Pilih Menu</h2>
                     <p class="text-muted">Masukkan jumlah pada menu yang ingin dipesan.</p>
+                    <button type="button" class="btn btn-danger btn-md mt-1 mb-1" onclick="document.querySelectorAll('#qty').forEach(i => i.value = 0);">
+                        RESET
+                    </button>
+                    <br>
                     <hr>
                     <div class="row row-cols-1 row-cols-md-4 g-4">
                         <?php
@@ -70,7 +75,7 @@
 
                             <div class="col">
                                 <div class="card h-100 shadow-sm">
-                                    <img src="../assets/<?php echo $menu['gambar']; ?>" class="card-img-top" style="height: 150px; object-fit: cover;">
+                                    <img src="../assets/<?php echo $menu['gambar']; ?>" class="card-img-top" style="height: 300px; object-fit: cover;">
                                     <div class="card-body d-flex flex-column">
                                         <h5 class="card-title"><?php echo $menu['nama_menu']; ?></h5>
                                         <p class="card-text text-success fw-bold mb-2">
@@ -79,7 +84,7 @@
 
                                         <div class="mt-auto d-flex align-items-center justify-content-between">
                                             <label class="small fw-bold">Jml:</label>
-                                            <input type="number" name="qty[<?php echo $id; ?>]" value="0" min="0" class="form-control input-qty">
+                                            <input type="number" name="qty[<?php echo $id; ?>]" id="qty" value="0" min="0" class="form-control input-qty">
 
                                             <input type="hidden" name="harga[<?php echo $id; ?>]" value="<?php echo $menu['harga']; ?>">
                                         </div>

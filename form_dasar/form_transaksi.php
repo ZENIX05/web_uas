@@ -1,5 +1,4 @@
 <?php
-// Data Menu (Kita taruh di atas supaya bisa dipakai di Form dan di Proses PHP)
 $data_menu_array = array(
     1 => array("nama" => "Kopi Susu Aren", "harga" => 20000, "status" => "Tersedia"),
     2 => array("nama" => "Americano", "harga" => 15000, "status" => "Tersedia"),
@@ -50,22 +49,19 @@ $data_menu_array = array(
     <hr>
 
     <?php
-    // BAGIAN PROSES PHP (Ditaruh di bawah seperti form_transaksi.php)
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $nama_pelanggan = $_POST['nama_pelanggan'];
-        $qty_input = $_POST['qty']; // Ini berbentuk array
+        $qty_input = $_POST['qty']; 
         $total_bayar = 0;
 
         echo "<h3>--- STRUK PEMBAYARAN ---</h3>";
-        echo "Nama Pelanggan: <strong>" . htmlspecialchars($nama_pelanggan) . "</strong><br><br>";
+        echo "Nama Pelanggan: <strong>" . $nama_pelanggan . "</strong><br><br>";
 
         echo "<table border='1' cellpadding='5' cellspacing='0'>";
         echo "<tr><th>Menu</th><th>Harga</th><th>Qty</th><th>Subtotal</th></tr>";
 
-        // Loop untuk mengecek setiap barang yang diinput
         foreach ($qty_input as $id => $jumlah) {
-            // Hanya proses jika jumlah lebih dari 0
             if ($jumlah > 0) {
                 $menu_item = $data_menu_array[$id];
                 $subtotal = $menu_item['harga'] * $jumlah;
@@ -80,8 +76,8 @@ $data_menu_array = array(
             }
         }
 
-        echo "<tr><td colspan='3' align='right'><strong>TOTAL</strong></td>";
-        echo "<td><strong>Rp " . number_format($total_bayar) . "</strong></td></tr>";
+        echo "<tr><td colspan='3' align='right'>TOTAL</td>";
+        echo "<td>Rp " . number_format($total_bayar) . "</td></tr>";
         echo "</table>";
     }
     ?>
