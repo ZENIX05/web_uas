@@ -31,7 +31,7 @@
                             <a class="nav-link " href="index.php">Menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pesanan.php">Pesanan</a>
+                            <a class="nav-link" href="Kasir.php">Kasir</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Transaksi</a>

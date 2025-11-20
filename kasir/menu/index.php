@@ -33,13 +33,13 @@
                             <a class="nav-link active" aria-current="page" href="#">Menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="pesanan.php">Pesanan</a>
+                            <a class="nav-link" href="../kasir/kasir.php">Kasir</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="transaksi.php">Transaksi</a>
+                            <a class="nav-link" href="../transaksi/transaksi.php">Transaksi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="promosi.php">Promosi</a>
+                            <a class="nav-link" href="../promosi/promosi.php">Promosi</a>
                         </li>
                     </ul>
                 </div>
@@ -51,7 +51,7 @@
         <div class="row">
             <section class="col-12">
                 <h1>Selamat Datang di Halaman Kasir Poin Coffeee</h1>
-                <p>Gunakan navigasi di atas untuk mengelola menu, pesanan, transaksi, dan promosi.</p>
+                <p>Gunakan navigasi di atas untuk mengelola menu, Kasir, transaksi, dan promosi.</p>
             </section>
         </div>
 
