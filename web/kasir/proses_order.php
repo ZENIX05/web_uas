@@ -30,4 +30,4 @@ foreach ($qty as $id_menu => $jumlah) {
     }
 }
 
-header("location:kasir.php");
+header("location:../transaksi/transaksi.php");

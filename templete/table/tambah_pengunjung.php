@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" action="tambah_pengunjung"> 
         <div class="container mb-3">
             <h2 class="mb-5">Tambah Menu Pengunjung</h2>
             
