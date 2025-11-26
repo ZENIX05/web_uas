@@ -53,7 +53,7 @@
 
                             <h5 class="card-title text-center">' . $judul . '</h5>
 
-                            <p class="card-text small flex-grow-1">' . $deskripsi . '</p>
+                            <p class="card-text small flex-grow-1">' . nl2br ($deskripsi) . '</p>
 
                             <p class="text-muted mb-1">
                                 <strong>Mulai:</strong> ' . $mulai . '
