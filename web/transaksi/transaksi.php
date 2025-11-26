@@ -33,24 +33,33 @@ if (isset($_POST['status_baru'])) {
 
 <body class="d-flex flex-column min-vh-100 bg-light">
     
-    <header class="container-fluid bg-primary shadow-sm mb-4">
+    <header class="container-fluid bg-primary">
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-dark container">
                 <a class="navbar-brand d-flex align-items-center" href="/">
                     <img src="https://pointcoffee.id/wp-content/uploads/2023/04/cropped-cropped-cropped-Logo-Point-Coffee.png"
-                        alt="Point Coffee" height="50" class="d-inline-block align-text-top me-2">
-                    <span class="fw-bold">Admin Panel</span>
+                        alt="Poin Coffeee" height="70" class="d-inline-block align-text-top">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link" href="../menu/index.php">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../kasir/kasir.php">Kasir</a></li>
-                        <li class="nav-item"><a class="nav-link active fw-bold" href="#">Transaksi</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../promosi/promosi.php">Promosi</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../menu/index.php">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="../kasir/kasir.php">Kasir</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../transaksi/transaksi.php">Transaksi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../promosi/promosi.php">Promosi</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -58,10 +67,11 @@ if (isset($_POST['status_baru'])) {
     </header>
 
     <main class="container flex-grow-1">
-        <h2 class="mb-4 border-bottom pb-2"><i class="bi bi-receipt-cutoff"></i> Daftar Transaksi</h2>
+        <h2 class="mb-4 border-bottom pb-2 mt-3"><i class="bi bi-receipt-cutoff"></i> Daftar Transaksi</h2>
 
         <?php
-        $query = mysqli_query($koneksi, "SELECT * FROM tbl_transaksi ORDER BY waktu_transaksi DESC");
+        $no = 1;
+        $query = mysqli_query($koneksi, "SELECT * FROM tbl_transaksi ORDER BY waktu_transaksi ASC");
         
         if (mysqli_num_rows($query) == 0) {
             echo "<div class='alert alert-info text-center'>Belum ada transaksi yang tercatat.</div>";
@@ -75,7 +85,7 @@ if (isset($_POST['status_baru'])) {
         ?>
             <div class="card mb-3 shadow-sm status-<?php echo $status; ?>">
                 <div class="card-header d-flex justify-content-between align-items-center bg-white">
-                    <span class="fw-bold">Order #<?php echo $id; ?></span>
+                    <span class="fw-bold">Order #<?php echo $no++; ?></span>
                     <span class="badge <?php echo $badge_color; ?> rounded-pill"><?php echo $status; ?></span>
                 </div>
                 <div class="card-body">
