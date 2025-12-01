@@ -1,22 +1,15 @@
 <?php
-// 1. Sertakan file koneksi database
 include "koneksi.php";
 
-// Pastikan ID promosi ada di URL
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    // Jika ID tidak ditemukan, kembalikan ke halaman daftar
     header("Location: tampilan.php");
     exit();
 }
 
 $id_promosi = $_GET['id'];
-
-// 2. Ambil data promosi berdasarkan ID
-// Tambahkan proteksi dari SQL Injection (mysqli_real_escape_string)
 $query = "SELECT * FROM tbl_promosi WHERE id_promosi = " . mysqli_real_escape_string($koneksi, $id_promosi);
 $result = mysqli_query($koneksi, $query);
 
-// Periksa apakah data promosi ditemukan
 if (mysqli_num_rows($result) == 0) {
     echo "Promosi tidak ditemukan.";
     exit();
@@ -24,10 +17,9 @@ if (mysqli_num_rows($result) == 0) {
 
 $promosi = mysqli_fetch_assoc($result);
 
-// 3. Fungsi untuk memformat tanggal (Opsional, tapi membuat tampilan lebih rapi)
+//  Fungsi untuk memformat tanggal (Opsional, tapi membuat tampilan lebih rapi)
 function formatTanggal($tanggal)
 {
-    // Memastikan input tanggal adalah format Y-m-d
     $bulan = array(
         1 =>   'Januari',
         'Februari',
@@ -60,7 +52,7 @@ $tgl_selesai_formatted = formatTanggal($promosi['tgl_selesai']);
     <title><?php echo $promosi['judul_promosi']; ?> - Detail Promosi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
-        /* Gaya untuk gambar agar responsif */
+        /* gambar jadi responsif */
         .detail-img {
             max-height: 400px;
             /* Batasi tinggi gambar agar tidak terlalu besar */
@@ -101,7 +93,7 @@ $tgl_selesai_formatted = formatTanggal($promosi['tgl_selesai']);
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <a href="tampilan.php" class="btn btn-sm btn-outline-secondary mb-4">&larr; Kembali ke Daftar Promosi</a>
+                <a href="tampilan.php" class="btn btn-outline-primary mb-4">&larr; Kembali ke Daftar Promosi</a>
 
                 <div class="card shadow-lg border-0">
 
@@ -116,7 +108,7 @@ $tgl_selesai_formatted = formatTanggal($promosi['tgl_selesai']);
                             </div>
 
                             <div class="col-12 col-md-6">
-                                <h4 class="text-dark mb-3">Deskripsi Promosi</h4>
+                                <h4 class="text-dark mb-3">Deskripsi Promo</h4>
                                 <p class="text-secondary"><?php echo nl2br($promosi['deskripsi']); ?></p>
 
                                 <div class="mt-4">

@@ -41,7 +41,8 @@ include "koneksi.php";
                 <label for="selesai" class="form-label">Tanggal Selesai:</label>
                 <input type="date" name="selesai" class="form-control" required>
             </div>
-            <button  name="simpan" value="simpan"  type="submit" class="submit-btn">Simpan</button>
+            <a href="index.php" class="btn btn-outline-danger me-md-2">Batal</a>
+            <button  name="simpan" value="simpan"  type="submit" class="btn btn-outline-primary">Simpan</button>
 
         </div>
     </form>

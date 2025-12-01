@@ -26,6 +26,15 @@ $row = mysqli_fetch_assoc($data);
         </div>
 
         <div class="mb-3">
+            <label for="gambar" class="form-label">Gambar</label>
+            <?php echo "
+            <img src='{$row['gambar_promosi']}' width='120'>"
+            ?>
+            <input type="file" class="form-control" id="gambar" name="gambar" 
+                   value="<?php echo $row['gambar_promosi']; ?>" required>
+        </div>
+
+        <div class="mb-3">
             <label for="deskripsi" class="form-label">Deskripsi</label>
             <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4" required><?php 
                 echo $row['deskripsi']; 
@@ -45,6 +54,7 @@ $row = mysqli_fetch_assoc($data);
         </div>
 
         <div class="text-center mb-5">
+            <a href="index.php" class="btn btn-outline-danger me-md-2">Batal</a>
             <input type="submit" name="update" value="Simpan" class="btn btn-outline-primary">
         </div>
     </form>
