@@ -1,80 +1,75 @@
-<?php include "../../link/koneksi.php"; ?>
+<?php 
+    include "koneksi.php";
+?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Tambah Menu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Artikel | Point Coffee</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <form method="POST" enctype="multipart/form-data">
-        <div class="container mb-3">
-            <h2 class="mb-5">Tambah Menu Pengunjung</h2>
-            
-            <div class="mb-3">
-                <label for="nama_menu" class="form-label">Nama Menu</label>
-                <select class="form-control" id="nama_menu" name="nama_menu" required>
-                    <option value="">-- Pilih Menu --</option>
-                    <option value="Hot Palm Sugar Latte">Hot Palm Sugar Latte</option>
-                    <option value="Hot Cafe Dolce">Hot Cafe Dolce</option>
-                    <option value="Iced Latte">Iced Latte</option>
-                    <option value="Hot Mocha">Hot Mocha</option>
-                </select>
+<header class="container-fluid bg-primary">
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="https://pointcoffee.id/wp-content/uploads/2023/04/cropped-cropped-cropped-Logo-Point-Coffee.png"
+                    alt="Poin Coffeee" height="70">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.php">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="tampilan.php">tampilan</a></li>
+                </ul>
             </div>
+        </nav>
+    </div>
+</header>
+    
+<div class="container mt-5">
+    <h2 class="mb-3 text-center">Baca Artikel dan Berita Terbaru Kami</h2>
+    <br>
 
-            <div class="mb-3">
-                <label for="gambar" class="form-label">Gambar</label>
-                <input class="form-control" type="file" id="gambar" name="gambar" accept="image/*" required>
-            </div>
+    <div class="row">
+        <?php 
+        // Ambil semua kolom termasuk isi_konten
+        $result = mysqli_query($koneksi, "SELECT * FROM tbl_artikel ORDER BY id_artikel DESC");
+        
+        while ($row = mysqli_fetch_assoc($result)) {
 
-            <div class="mb-3">
-                <label for="deskripsi" class="form-label">Deskripsi</label>
-                <input type="text" class="form-control" id="deskripsi" name="deskripsi" required>
-            </div>
+            $judul = htmlspecialchars($row['judul_artikel']);
+            $gambar = htmlspecialchars($row['gambar_utama']);
+            $konten = htmlspecialchars($row['isi_konten']);
 
-            <div class="mb-3">
-                <label for="harga" class="form-label">Harga</label>
-                <input type="number" class="form-control" id="harga" name="harga" required>
-            </div>
+            // buat preview 100 karakter
+            $preview = substr($konten, 0, 100) . "...";
 
-            <div class="mb-3">
-                <label for="status" class="form-label">Status</label>
-                <input type="text" class="form-control" id="status" name="status" required>
-            </div>
-
-            <input type="submit" name="simpan" value="Simpan" class="btn btn-outline-primary">
-        </div>
-    </form>
-
-    <?php
-    if (isset($_POST['simpan'])) {
-        $nama_menu = ($_POST['nama_menu']);
-        $deskripsi = ($_POST['deskripsi']);
-        $harga = ($_POST['harga']);
-        $status = ($_POST['status']);
-        $gambar = '';
-
-        if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = __DIR__ . '/uploads/';
-            if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
-            
-            $tmpName = $_FILES['gambar']['tmp_name'];
-            $ext = strtolower(pathinfo($_FILES['gambar']['name'], PATHINFO_EXTENSION));
-            $allowedExts = ['jpg', 'jpeg', 'png', 'gif'];
-            
-            if (in_array($ext, $allowedExts)) {
-                $safeName = uniqid('img_', true) . '.' . $ext;
-                if (move_uploaded_file($tmpName, $uploadDir . $safeName)) {
-                    $gambar = 'uploads/' . $safeName;
-                }
-            }
+            echo '
+            <div class="col-sm-6 col-md-4 mb-4"> 
+                <div class="card h-100 shadow-sm">
+                    <a href="isi_tampilan.php?id=' . $row['id_artikel'] . '" class="text-decoration-none text-reset">
+                        <img src="' . $gambar . '" class="card-img-top" alt="' . $judul . '" 
+                             style="height:250px; object-fit:cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-center">' . $judul . '</h5>
+                            <p class="card-text text-muted" style="font-size:14px;">' . $preview . '</p>
+                        </div>
+                    </a>
+                </div>
+            </div>';
         }
+        ?>
+    </div>
+</div>
 
-        $query = "INSERT INTO tbl_menu (nama_menu, harga, deskripsi, gambar, status) VALUES ('$nama_menu', '$harga', '$deskripsi', '$gambar', '$status')";
-        if (mysqli_query($koneksi, $query)) {
-            header("Location: index.php");
-            exit();
-        }
-    }
-    ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

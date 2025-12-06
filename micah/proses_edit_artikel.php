@@ -1,11 +1,10 @@
 
 <?php
-include "../link/koneksi.php";
+include "koneksi.php";
 if (isset($_POST['update'])) {
         $judul = ($_POST['judul_artikel']);
         $konten = ($_POST['isi_konten']);
         $penulis = ($_POST['penulis']);
-        $id_staf = ($_POST['id_staf']);
         $result = mysqli_query($koneksi, "SELECT gambar_utama FROM tbl_artikel");
         $row = mysqli_fetch_assoc($result);
 
@@ -26,7 +25,7 @@ if (isset($_POST['update'])) {
             }
         }
 
-        $query = "UPDATE tbl_artikel SET judul_artikel='$judul', isi_konten='$konten', penulis= '$penulis', id_staf='$id_staf', gambar_utama='$gambar'";
+        $query = "UPDATE tbl_artikel SET judul_artikel='$judul', isi_konten='$konten', penulis= '$penulis', gambar_utama='$gambar'";
         if (mysqli_query($koneksi, $query)) {
             header("location:index.php");
             exit();

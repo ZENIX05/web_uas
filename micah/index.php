@@ -1,5 +1,5 @@
 <?php
-    include "../link/koneksi.php";
+    include "koneksi.php";
     
 ?>
 
@@ -37,6 +37,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Artikel</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tampilan.php">Tampilan</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -58,28 +61,26 @@
                     <th>Gambar</th>
                     <th>Konten</th> 
                     <th>Penulis</th> 
-                    <th>Id staff</th>
                     <th>Aksi</th>
                 </tr>
                 <?php
-                include "../link/koneksi.php";
+                include "koneksi.php";
                 $result = mysqli_query($koneksi, "SELECT * FROM tbl_artikel");
                 $no = 1;
-                while ($row = mysqli_fetch_assoc($result)) {
+                while ($row = mysqli_fetch_assoc($result)) 
                     echo "<tr>
                     <td>".$no."</td>
                     <td>".$row['judul_artikel']."</td>
                     <td><img src='".$row['gambar_utama']."' width='150px'></td>
                     <td>".$row['isi_konten']."</td>
                     <td>".$row['penulis']."</td>    
-                    <td>".$row['id_staf']."</td>
                     <td>
                         <a class='btn btn-outline-primary me-1' href='edit.php?id=".$row['id_artikel']."'>Edit</a>
                         <a class='btn btn-outline-danger' href='hapus.php?id=".$row['id_artikel']."' onclick='return confirm(\"Hapus data ini?\")'>Hapus</a>
                     </td>
                 </tr>";
                     $no++;
-                }
+                
                 ?>
             </table>
         </div>  

@@ -1,4 +1,4 @@
-<?php include "../link/koneksi.php"; ?>
+<?php include "koneksi.php"; ?>
 <?php
 $id = $_GET['id'];
 $data = mysqli_query($koneksi, "SELECT * FROM tbl_artikel WHERE id_artikel=$id");
@@ -43,12 +43,7 @@ $row = mysqli_fetch_assoc($data);
                        value="<?php echo $row['penulis']; ?>">
             </div>
 
-             <div class="mb-3">
-                 <label for="id_staf" class="form-label">ID staff:</label>
-                <input type="number" name="id_staf" id="staff" size="10"
-                       value="<?php echo $row['id_staf']; ?>">
-            </div>
-
+            
             <input type="submit" name="update" value="simpan" class="btn btn-outline-primary">
         </div>
     </form>

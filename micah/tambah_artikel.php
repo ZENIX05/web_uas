@@ -1,4 +1,4 @@
-<?php include "../link/koneksi.php"; ?>
+<?php include "koneksi.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,11 +28,6 @@
             <div class="mb-3">
                 <label for="penulis" class="form-label">Penulis:</label>
                 <input type="text" name="penulis" id="penulis" size="40">
-            </div>
-
-             <div class="mb-3">
-                 <label for="id_staf" class="form-label">ID staff:</label>
-                <input type="number" name="id_staf" id="staff" size="10">
             </div>
 
             <input type="submit" name="simpan" value="simpan" class="btn btn-outline-primary">

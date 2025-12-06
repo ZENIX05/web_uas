@@ -1,12 +1,11 @@
 <?php
-include "../link/koneksi.php";
+include "koneksi.php";
 
 
     if (isset($_POST['simpan'])) {
         $judul = ($_POST['judul_artikel']);
         $konten = ($_POST['isi_konten']);
         $penulis = ($_POST['penulis']);
-        $id_staf = ($_POST['id_staf']);
         $gambar = '';
 
         if (isset($_FILES['gambar_utama']) && $_FILES['gambar_utama']['error'] === UPLOAD_ERR_OK) {
@@ -25,7 +24,7 @@ include "../link/koneksi.php";
             }
         }
 
-        $query = "INSERT INTO tbl_artikel (judul_artikel, isi_konten, penulis, id_staf, gambar_utama) VALUES ('$judul', '$konten', '$penulis', '$id_staf', '$gambar')";
+        $query = "INSERT INTO tbl_artikel (judul_artikel, isi_konten, penulis, gambar_utama) VALUES ('$judul', '$konten', '$penulis', '$gambar')";
         if (mysqli_query($koneksi, $query)) {
             header("location:index.php");
             exit();
