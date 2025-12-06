@@ -23,18 +23,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link " href="#">Staf</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Menu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Kasir</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Promosi</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Artikel</a>
                     </li>
                     <li class="nav-item">
@@ -46,8 +34,8 @@
     </nav>
     <div class="container">
         <div class="mt-4 p-5 bg-dark text-white rounded">
-            <h1>Selamat Datang, Ibra ganteng!</h1>
-            <p>Kelola menu Point Coffee Anda.</p>
+            <h1>Selamat Datang, di Point Coffee!</h1>
+            <p>Enjoy your Coffee .</p>
         </div>
     </div>
     <div class="container mt-5">
